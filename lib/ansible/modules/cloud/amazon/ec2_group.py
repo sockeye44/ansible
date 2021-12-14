@@ -1041,10 +1041,10 @@ def get_rule_sort_key(dicts):
 def get_ip_permissions_sort_key(rule):
     if rule.get('ip_ranges'):
         rule.get('ip_ranges').sort(key=get_rule_sort_key)
-        return rule.get('ip_ranges')[0]['cidr_ip']
+        return str(rule.get('ip_ranges')[0]['cidr_ip'])
     elif rule.get('ipv6_ranges'):
         rule.get('ipv6_ranges').sort(key=get_rule_sort_key)
-        return rule.get('ipv6_ranges')[0]['cidr_ipv6']
+        return str(rule.get('ipv6_ranges')[0]['cidr_ipv6'])
     elif rule.get('prefix_list_ids'):
         rule.get('prefix_list_ids').sort(key=get_rule_sort_key)
         return rule.get('prefix_list_ids')[0]['prefix_list_id']
